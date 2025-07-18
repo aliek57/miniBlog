@@ -15,6 +15,10 @@
   text-transform: uppercase;
 }
 
+.brand:hover {
+  color: #000;
+}
+
 .links_list {
   display: flex;
   list-style: none;
@@ -29,6 +33,5 @@
 }
 
 .active {
-  background-color: #000;
-  color: #fff;
+  font-weight: 800;
 }
