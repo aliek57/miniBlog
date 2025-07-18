@@ -1,5 +1,5 @@
 import styles from './Register.module.css'
-import { ToastContainer } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 
 import { useEffect, useState } from "react";
 
@@ -22,7 +22,7 @@ const Register = () => {
     };
 
     if (password !== confirmPassword) {
-      setError("As senhas precisam ser iguais.");
+      toast.error("As senhas precisam ser iguais.")
       return;
     }
 
@@ -79,9 +79,9 @@ const Register = () => {
           />
         </label>
         <button className="btn">Cadastrar</button>
-        {error && <p className="error">{error}</p>}
+        {error}
         <ToastContainer
-          position="top-center"
+          position="top-right"
           autoClose={3000}
           hideProgressBar={false}
           closeOnClick
