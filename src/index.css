@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Intel+One+Mono:ital,wght@0,300..700;1,300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Intel+One+Mono:ital,wght@0,300..700;1,300..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 body {
   background-color: #f6fcff;
@@ -29,14 +29,10 @@ nav button {
   font-family: "Intel One Mono", monospace;
 }
 
-a:hover,
-nav button:hover{
-  border-bottom: 2px solid #d15807;
-}
-
 form {
   max-width: 40%;
   margin: 0 auto;
+  padding: 1rem;
 }
 
 label {
@@ -106,12 +102,11 @@ textarea::placeholder {
 
 button[disabled] {
   background-color: #aaa;
+  cursor: not-allowed;
 }
 
 .container .error {
-  color: #721c24;
-  /* background-color: #f8d7da;
-  border: 1px solid #f5c6cb; */
+  color: #ac2230;
   padding: 5px;
   border-radius: 5px;
 }

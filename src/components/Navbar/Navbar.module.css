@@ -7,16 +7,15 @@
 }
 
 .brand {
+  font-family: "Montserrat", sans-serif;
   font-size: 1.2em;
+  text-decoration: none;
+  color: #000;
 }
 
 .brand span {
   font-weight: 900;
   text-transform: uppercase;
-}
-
-.brand:hover {
-  color: #000;
 }
 
 .links_list {
@@ -29,9 +28,29 @@
 }
 
 .links_list li a {
-  padding: 0.4em 0.6em;
+  position: relative;
+  padding-bottom: 5px;
+  transition: color 0.3s ease-in-out;
+  text-decoration: none;
+  color: #000;
+}
+
+.links_list li a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  left: 0;
+  bottom: 0;
+  background-color: #d15807;
+  transition: width 0.3s ease-in-out;
+}
+
+.links_list li a:hover::after {
+  width: 100%;
 }
 
 .active {
   font-weight: 800;
+  color: #d15807;
 }
