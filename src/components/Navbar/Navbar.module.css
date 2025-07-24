@@ -20,6 +20,7 @@
 
 .links_list {
   display: flex;
+  align-items: center;
   list-style: none;
 }
 
@@ -53,4 +54,20 @@
 .active {
   font-weight: 800;
   color: #d15807;
+}
+
+.btnLogout {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  padding: 0.3em 1em;
+  border: 2px solid rgb(175, 9, 9);
+  color: rgb(175, 9, 9);
+  border-radius: 5px;
+  background-color: transparent;
+}
+
+.btnLogout:hover {
+  background-color: rgb(175, 9, 9);
+  color: #fff;
+  border-color: transparent;
 }

@@ -45,21 +45,58 @@ export const useAuth = () => {
             toast.success("Usuário cadastrado com sucesso!")
 
             return user
-        } catch (error) {
+        } catch (err) {
             let systemErrorMessage;
 
-            if (error.message.includes("Password")) {
+            if (err.message.includes("Password")) {
                 systemErrorMessage = "A senha precisa conter pelo menos 6 caracteres.";
-            } else if (error.message.includes("email-already")) {
+            } else if (err.message.includes("email-already")) {
                 systemErrorMessage = "E-mail já cadastrado.";
             } else {
                 systemErrorMessage = "Ocorreu um erro, por favor tente mais tarde.";
             }
 
+            setError(systemErrorMessage)
             setLoading(false)
             toast.error(systemErrorMessage);
         }
     }
+
+    const logout = () => {
+        checkIfIsCancelled();
+
+        signOut(auth);
+    };
+
+    const login = async (data) => {
+        checkIfIsCancelled();
+    
+        setLoading(true);
+        setError(false);
+    
+        try {
+          const userCredential = await signInWithEmailAndPassword(auth, data.email, data.password);
+          setError(null);
+          toast.success("Usuário autenticado!");
+          return userCredential.user;
+        } catch (err) {    
+          let systemErrorMessage;
+    
+          if (err.message.includes("user-not-found")) {
+            systemErrorMessage = "Usuário não encontrado.";
+          } else if (err.message.includes("wrong-password")) {
+            systemErrorMessage = "Senha incorreta.";
+          } else {
+            systemErrorMessage = "Ocorreu um erro, por favor tenta mais tarde.";
+          }
+    
+          setError(systemErrorMessage);
+          toast.error(systemErrorMessage);
+          return null;
+        } finally {
+            setLoading(false);
+        }
+    };
 
     useEffect(() => {
         return () => setCancelled(true)
@@ -69,6 +106,8 @@ export const useAuth = () => {
         auth, 
         createUser,
         error,
-        loading
+        loading,
+        login,
+        logout
     }
 }
