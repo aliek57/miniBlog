@@ -11,6 +11,10 @@ import Dashboard from './pages/Dashboard/Dashboard'
 
 import { ProtectedRoute } from "./components/ProtectedRoute/ProtectedRoute";
 
+import Create from './pages/Post/Create/Create'
+import Edit from './pages/Post/Edit/Edit'
+import Detail from './pages/Post/Detail/Detail'
+
 function App() {
 
   return (
@@ -21,10 +25,18 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          {/* adicionar aqui as rotas protegidas */}
+          <Route path="/posts/:id" element={<Detail />} />
           <Route
                 path="/dashboard"
                 element={<ProtectedRoute element={<Dashboard />} />}
+          />
+          <Route
+                path="/posts/create"
+                element={<ProtectedRoute element={<Create />} />}
+          />
+          <Route
+                path="/posts/edit/:id"
+                element={<ProtectedRoute element={<Edit />} />}
           />
         </Routes>
       </div>
